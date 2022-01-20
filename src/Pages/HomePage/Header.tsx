@@ -5,14 +5,15 @@ import { toRem } from "../../Helpers/utils";
 import Flexbox from "../../StyledComponents/Flexbox";
 import Text from "../../StyledComponents/Text";
 import navbarImage from "../../Images/navbar-boy.png";
+import { Box, Flex, Grid, HStack, Image, Input, InputGroup, InputLeftElement, Spacer } from "@chakra-ui/react";
 interface HeaderProps {}
 
 const useStyles = makeStyles((theme) => ({
    searchInput: { "&::placeholder": { color: "white" }, color: "white" },
 }));
 
-const SearchInputWrapper = styled(Flexbox)`
-   border-bottom: 1px solid #ffffff80;
+const SearchInputWrapper = styled(HStack)`
+   /* border-bottom: 1px solid #ffffff80; */
    input:focus,
    input:active,
    input {
@@ -40,27 +41,46 @@ const RoundImage = styled.img`
 `;
 
 const Header: React.FC<HeaderProps> = () => {
-   const styles = useStyles();
    return (
-      <Flexbox margin={`${toRem(50)}`} justify="space-between">
+      <Flex margin={`${toRem(50)}`}>
          <Flexbox gap={78} gapMob={20}>
             {icons.webcam}
-            <SearchInputWrapper pb={6} gap={6}>
+            <SearchInputWrapper pb="0.5rem" borderBottom="1px solid #FFFFFF80" spacing="0.4rem">
                {icons.search}
-               <input style={{ width: toRem(174) }} placeholder="search"></input>
+               <Input bg="transparent" width={toRem(174)} placeholder="search" />
             </SearchInputWrapper>
          </Flexbox>
-         <Flexbox gap={28}>
-            <Badge align="center" gap={9} padding={toRem(13)}>
-               <div style={{ marginBottom: "-0.75rem" }}>{icons.diamond}</div>
-               <Text size={32} color="white">
-                  35,651
-               </Text>
-            </Badge>
-
-            <RoundImage src={navbarImage}></RoundImage>
-         </Flexbox>
-      </Flexbox>
+         <Spacer></Spacer>
+         <HStack spacing={toRem(28)}>
+            <Flex>
+               <HStack
+                  bg="#C4C4C41A"
+                  p={toRem(13)}
+                  borderRadius={toRem(10)}
+                  borderRightRadius={0}
+                  alignItems="center"
+                  spacing={toRem(9)}
+               >
+                  <Box mb="-0.75rem">{icons.diamond}</Box>
+                  <Box fontSize={toRem(26)} color="white">
+                     35,657
+                  </Box>
+               </HStack>
+               <Box
+                  p={toRem(13)}
+                  borderRadius={toRem(10)}
+                  alignItems="center"
+                  bg="#C4C4C40D"
+                  color="white"
+                  borderLeftRadius={0}
+                  fontSize={toRem(26)}
+               >
+                  $ 35.66
+               </Box>
+            </Flex>
+            <Image src={navbarImage} height={toRem(72)} width={toRem(72)} borderRadius="50%"></Image>
+         </HStack>
+      </Flex>
    );
 };
 

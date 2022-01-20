@@ -76,14 +76,21 @@ const Content: React.FC<ContentProps> = () => {
                   >
                      <Flex position="absolute" width="100%" height="100%" direction="column" justify="end">
                         <Flex width="100%" justify="center">
-                           <HStack borderRadius="0.5rem" spacing={toRem(10)} bg="#0A070D80" px="1.5rem" py="1rem">
+                           <HStack
+                              borderRadius="0.5rem"
+                              borderBottomRadius={0}
+                              spacing={toRem(10)}
+                              bg="#0A070D80"
+                              px="1.5rem"
+                              py="1rem"
+                           >
                               {icons.userIcon}
                               <Box color="white" fontSize={26}>
                                  16 in queue
                               </Box>
                            </HStack>
                         </Flex>
-                        <Flex CardFooterWrapper padding={`1rem ${toRem(72)}`} fullWidth>
+                        <Flex bg="#0A070D80" padding={`1rem ${toRem(72)}`} fullWidth>
                            <CardButton
                               style={{ borderRadius: toRem(10), cursor: "pointer" }}
                               justify="center"
